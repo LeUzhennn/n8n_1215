@@ -1,0 +1,55 @@
+{
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "GET",
+                "path": "demo-2-nodes",
+                "responseMode": "responseNode"
+            },
+            "id": "Webhook",
+            "name": "Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                300,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "responseCode": 200,
+                "responseBody": "{ \"status\": \"ok\", \"message\": \"n8n two-node workflow test\" }",
+                "responseHeaders": {
+                    "entries": [
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                }
+            },
+            "id": "Respond",
+            "name": "Respond to Webhook",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                560,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Respond to Webhook",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false
+}
